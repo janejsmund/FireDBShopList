@@ -21,23 +21,28 @@ import java.util.List;
 public class MainActivity extends Activity {
 
     Button btnSave;
-    EditText edtName;
+    EditText edtName, edtAmount, edtPrice, edtAmountBought;
     DatabaseReference databaseReference;
-    ListView listViewUsers;
-    List<User> users;
-    protected static String userId;
+    ListView listViewGroceries;
+    List<Grocery> groceries;
+    protected static String groceryId;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        users = new ArrayList<User>();
-        databaseReference = FirebaseDatabase.getInstance().getReference("users");
+        groceries = new ArrayList<>();
+        databaseReference = FirebaseDatabase.getInstance().getReference("groceries");
 
         btnSave = findViewById(R.id.btnSave);
+
         edtName = findViewById(R.id.edtName);
-        listViewUsers = findViewById(R.id.listViewUsers);
+        edtAmount = findViewById(R.id.edtAmount);
+        edtPrice = findViewById(R.id.edtPrice);
+        edtAmountBought = findViewById(R.id.edtAmountBought);
+
+        listViewGroceries = findViewById(R.id.listViewGroceries);
 
         btnSave.setOnClickListener(new View.OnClickListener() {
 
@@ -45,20 +50,26 @@ public class MainActivity extends Activity {
             public void onClick(View view) {
 
                 String name = edtName.getText().toString();
+                String amount = edtAmount.getText().toString();
+                String price = edtPrice.getText().toString();
+                String amountBought = edtAmountBought.getText().toString();
 
-                if (TextUtils.isEmpty(userId)) {
+                if (TextUtils.isEmpty(groceryId)) {
                     String id = databaseReference.push().getKey();
-                    User user = new User(id, name);
-                    databaseReference.child(id).setValue(user);
+                    Grocery grocery = new Grocery(id, name, amount, price, amountBought);
+                    databaseReference.child(id).setValue(grocery);
 
-                    Toast.makeText(MainActivity.this, "User created successfully", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(MainActivity.this, "Grocery item created successfully", Toast.LENGTH_SHORT).show();
                 } else {
-                    databaseReference.child(userId).child("name").setValue(name);
+                    databaseReference.child(groceryId).child("name").setValue(name);
 
-                    Toast.makeText(MainActivity.this, "User updated successfully", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(MainActivity.this, "Grocery item updated successfully", Toast.LENGTH_SHORT).show();
                 }
 
-                edtName.setText(null);
+                edtName.setText("Nazwa");
+                edtAmount.setText("Ilość");
+                edtPrice.setText("Cena");
+                edtAmountBought.setText("Kupiono sztuk");
             }
         });
     }
@@ -72,16 +83,16 @@ public class MainActivity extends Activity {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
 
-                users.clear();
+                groceries.clear();
 
                 for (DataSnapshot postSnapshot: dataSnapshot.getChildren()) {
 
-                    User user = postSnapshot.getValue(User.class);
-                    users.add(user);
+                    Grocery grocery = postSnapshot.getValue(Grocery.class);
+                    groceries.add(grocery);
                 }
 
-                UserList userAdapter = new UserList(MainActivity.this, users, databaseReference, edtName);
-                listViewUsers.setAdapter(userAdapter);
+                GroceryList userAdapter = new GroceryList(MainActivity.this, groceries, databaseReference, edtName, edtAmount, edtPrice, edtAmountBought);
+                listViewGroceries.setAdapter(userAdapter);
             }
 
             @Override

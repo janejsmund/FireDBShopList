@@ -5,41 +5,111 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.janejsmund.firedbshoplist.MainActivity">
+    tools:context="com.janejsmund.firedbshoplist.MainActivity"
+    android:orientation="vertical">
 
-    <LinearLayout
+    <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical">
+        android:text="Dodaj produkt"
+        android:layout_marginTop="20dp"
+        android:layout_marginBottom="5dp"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:gravity="center"/>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@android:color/black"></View>
+
+    <GridLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:columnCount="4">
 
         <EditText
             android:id="@+id/edtName"
             android:layout_width="wrap_content"
-            android:layout_height="70dp" />
+            android:layout_height="40dp"
+            android:layout_column="0"
+            android:layout_columnWeight="1"
+            android:layout_marginLeft="5dp"
+            android:layout_marginRight="5dp"
+            android:text="Nazwa"
+            android:gravity="center"
+            android:textAppearance="?android:attr/textAppearanceSmall"/>
+
+        <EditText
+            android:id="@+id/edtAmount"
+            android:layout_width="wrap_content"
+            android:layout_height="40dp"
+            android:layout_column="1"
+            android:layout_columnWeight="1"
+            android:layout_marginLeft="5dp"
+            android:layout_marginRight="5dp"
+            android:text="Ilość"
+            android:gravity="center"
+            android:textAppearance="?android:attr/textAppearanceSmall"/>
+
+        <EditText
+            android:id="@+id/edtPrice"
+            android:layout_width="wrap_content"
+            android:layout_height="40dp"
+            android:layout_column="2"
+            android:layout_columnWeight="1"
+            android:layout_marginLeft="5dp"
+            android:layout_marginRight="5dp"
+            android:text="Cena"
+            android:gravity="center"
+            android:textAppearance="?android:attr/textAppearanceSmall"/>
+
+        <EditText
+            android:id="@+id/edtAmountBought"
+            android:layout_width="wrap_content"
+            android:layout_height="40dp"
+            android:layout_column="3"
+            android:layout_columnWeight="1"
+            android:layout_marginLeft="5dp"
+            android:layout_marginRight="5dp"
+            android:text="Kupiono sztuk"
+            android:gravity="center"
+            android:textAppearance="?android:attr/textAppearanceSmall"/>
+
+
+        
+
+    </GridLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center">
 
         <Button
             android:id="@+id/btnSave"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Save"/>
-        
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Users List"
-            android:layout_marginTop="20dp"
-            android:layout_marginBottom="20dp"
-            android:textAppearance="?android:attr/textAppearanceLarge"/>
-        
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="1dp"
-            android:background="@android:color/black"></View>
-        
-        <ListView
-            android:id="@+id/listViewUsers"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"></ListView>
-    </LinearLayout>
+            android:text="Zapisz"/>
+    </RelativeLayout>
+
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Lista Zakupów"
+        android:layout_marginTop="20dp"
+        android:layout_marginBottom="20dp"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:gravity="center"/>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@android:color/black"></View>
+
+    <ListView
+        android:id="@+id/listViewGroceries"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"></ListView>
 
 </LinearLayout >
