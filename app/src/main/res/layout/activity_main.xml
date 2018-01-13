@@ -35,7 +35,7 @@
             android:layout_columnWeight="1"
             android:layout_marginLeft="5dp"
             android:layout_marginRight="5dp"
-            android:text="Nazwa"
+            android:hint="Nazwa"
             android:gravity="center"
             android:textAppearance="?android:attr/textAppearanceSmall"/>
 
@@ -47,9 +47,10 @@
             android:layout_columnWeight="1"
             android:layout_marginLeft="5dp"
             android:layout_marginRight="5dp"
-            android:text="Ilość"
+            android:hint="Ilość"
             android:gravity="center"
-            android:textAppearance="?android:attr/textAppearanceSmall"/>
+            android:textAppearance="?android:attr/textAppearanceSmall"
+            android:inputType="number"/>
 
         <EditText
             android:id="@+id/edtPrice"
@@ -59,9 +60,10 @@
             android:layout_columnWeight="1"
             android:layout_marginLeft="5dp"
             android:layout_marginRight="5dp"
-            android:text="Cena"
+            android:hint="Cena"
             android:gravity="center"
-            android:textAppearance="?android:attr/textAppearanceSmall"/>
+            android:textAppearance="?android:attr/textAppearanceSmall"
+            android:inputType="numberDecimal"/>
 
         <EditText
             android:id="@+id/edtAmountBought"
@@ -71,9 +73,10 @@
             android:layout_columnWeight="1"
             android:layout_marginLeft="5dp"
             android:layout_marginRight="5dp"
-            android:text="Kupiono sztuk"
+            android:hint="Kupiono sztuk"
             android:gravity="center"
-            android:textAppearance="?android:attr/textAppearanceSmall"/>
+            android:textAppearance="?android:attr/textAppearanceSmall"
+            android:inputType="number"/>
 
 
         

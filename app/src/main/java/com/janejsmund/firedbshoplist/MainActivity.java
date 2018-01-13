@@ -55,6 +55,7 @@ public class MainActivity extends Activity {
                 String amountBought = edtAmountBought.getText().toString();
 
                 if (TextUtils.isEmpty(groceryId)) {
+
                     String id = databaseReference.push().getKey();
                     Grocery grocery = new Grocery(id, name, amount, price, amountBought);
                     databaseReference.child(id).setValue(grocery);
@@ -66,10 +67,10 @@ public class MainActivity extends Activity {
                     Toast.makeText(MainActivity.this, "Grocery item updated successfully", Toast.LENGTH_SHORT).show();
                 }
 
-                edtName.setText("Nazwa");
-                edtAmount.setText("Ilość");
-                edtPrice.setText("Cena");
-                edtAmountBought.setText("Kupiono sztuk");
+                edtName.setHint("Nazwa");
+                edtAmount.setHint("Ilość");
+                edtPrice.setHint("Cena");
+                edtAmountBought.setHint("Kupiono sztuk");
             }
         });
     }
@@ -91,8 +92,8 @@ public class MainActivity extends Activity {
                     groceries.add(grocery);
                 }
 
-                GroceryList userAdapter = new GroceryList(MainActivity.this, groceries, databaseReference, edtName, edtAmount, edtPrice, edtAmountBought);
-                listViewGroceries.setAdapter(userAdapter);
+                GroceryList groceryAdapter = new GroceryList(MainActivity.this, groceries, databaseReference, edtName, edtAmount, edtPrice, edtAmountBought);
+                listViewGroceries.setAdapter(groceryAdapter);
             }
 
             @Override

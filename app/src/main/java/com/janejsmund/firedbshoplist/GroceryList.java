@@ -72,6 +72,9 @@ public class GroceryList extends ArrayAdapter<Grocery> {
             @Override
             public void onClick(View view) {
                 edtName.setText(grocery.getName());
+                edtAmount.setText(grocery.getAmount());
+                edtPrice.setText(grocery.getPrice());
+                edtAmountBought.setText(grocery.getAmountBought());
                 MainActivity.groceryId = grocery.getId();
             }
         });
