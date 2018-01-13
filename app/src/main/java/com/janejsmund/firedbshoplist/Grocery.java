@@ -12,6 +12,8 @@ public class Grocery {
     private String price;
     private String amountBought;
 
+    public Grocery() {}
+
     public Grocery(String id, String name, String amount, String price, String amountBought) {
         this.id = id;
         this.name = name;
