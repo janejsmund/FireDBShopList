@@ -67,10 +67,16 @@ public class MainActivity extends Activity {
                     Toast.makeText(MainActivity.this, "Grocery item updated successfully", Toast.LENGTH_SHORT).show();
                 }
 
-                edtName.setText("Nazwa");
-                edtAmount.setText("Ilość");
-                edtPrice.setText("Cena");
-                edtAmountBought.setText("Kupiono sztuk");
+                edtName.setHint("Nazwa");
+                edtAmount.setHint("Ilość");
+                edtPrice.setHint("Cena");
+                edtAmountBought.setHint("Kupiono sztuk");
+
+                edtName.setText("");
+                edtAmount.setText("");
+                edtPrice.setText("");
+                edtAmountBought.setText("");
+
             }
         });
     }
